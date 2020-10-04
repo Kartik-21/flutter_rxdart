@@ -3,7 +3,7 @@ import 'package:rxdart/rxdart.dart';
 
 class HomeScreenBloc extends Object with Validator {
   final _emailController = PublishSubject<String>();
-  final _passwordControlller = PublishSubject<String>();
+  final _passwordControlller = PublishSubject<String>();    //it always refresh and get new values
 
   StreamSink<String> get emailChanged => _emailController.sink;
 
@@ -29,7 +29,7 @@ mixin Validator {
       if (data.length > 6) {
         sink.add(data);
       } else {
-        sink.addError("enter lenght >6");
+        sink.addError("Enter length >6");
       }
     },
   );
