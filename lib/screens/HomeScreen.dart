@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rxdart/blocs/HomeScreenBloc.dart';
+import 'package:flutter_rxdart/screens/FetchDataScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -77,6 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: snapshot.hasData
                               ? () {
                                   debugPrint("submit");
+
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) {
+                                      return FetchDataScreen();
+                                    },
+                                  ));
                                 }
                               : null,
                           elevation: 6.0,

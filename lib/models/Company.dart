@@ -13,4 +13,9 @@ class Company {
   String name;
   String catchPhrase;
   String bs;
+
+  factory Company.fromJson(Map<String, dynamic> json) =>
+      _$CompanyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CompanyToJson(this);
 }

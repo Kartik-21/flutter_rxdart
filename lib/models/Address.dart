@@ -1,5 +1,6 @@
 import 'package:flutter_rxdart/models/Geo.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'Address.g.dart';
 
 @JsonSerializable()
@@ -18,5 +19,8 @@ class Address {
   String zipcode;
   Geo geo;
 
-  factory
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
