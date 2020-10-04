@@ -32,7 +32,16 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
                 stream: postBloc.myUser,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text("ok");
+                    return ListView.builder(
+                      //itemCount: snapshot.data.lenght,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: ListTile(
+                            title: Text(snapshot.data.Post[index].id.toString()),
+                          ),
+                        );
+                      },
+                    );
                   } else {
                     return Text("error");
                   }
