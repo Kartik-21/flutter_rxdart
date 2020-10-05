@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rxdart/blocs/FetchDataForPostBloc.dart';
 import 'package:flutter_rxdart/blocs/FetchDataScreenBloc.dart';
+import 'package:flutter_rxdart/models/Post.dart';
 
 class FetchDataScreen extends StatefulWidget {
   @override
@@ -28,22 +28,25 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
               centerTitle: true,
             ),
             body: Container(
-              child: StreamBuilder(
-                stream: postBloc.myUser,
+              child: StreamBuilder<List<Post>>(
+                stream: postBloc.myPost,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
-                      //itemCount: snapshot.data.lenght,
+                      itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return Card(
                           child: ListTile(
-                            title: Text(snapshot.data.Post[index].id.toString()),
+                            title: Text(snapshot.data[index].id.toString()),
+                            subtitle: Text(snapshot.data[index].title),
                           ),
                         );
                       },
                     );
                   } else {
-                    return Text("error");
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
                   }
                 },
               ),
