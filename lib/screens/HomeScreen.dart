@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: StreamBuilder<String>(
                     stream: bloc.email,
                     builder: (context, snapshot) {
+                      //  print(bloc.email.);
                       return TextField(
                         onChanged: (s) => bloc.emailChanged.add(s),
                         decoration: InputDecoration(
@@ -77,8 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return RaisedButton(
                           onPressed: snapshot.hasData
                               ? () {
-                                  debugPrint("submit");
-
+                                  //  debugPrint("submit");
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) {
                                       return FetchDataScreen();
@@ -88,9 +88,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               : null,
                           elevation: 6.0,
                           color: Theme.of(context).accentColor,
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(fontSize: 20.0),
+                          child: StreamBuilder<String>(
+                            stream: bloc.email,
+                            builder: (context, snapshot) {
+                              return Text(
+                                snapshot.data ?? "nothing",
+                                style: TextStyle(fontSize: 20.0),
+                              );
+                            },
                           ),
                         );
                       },
