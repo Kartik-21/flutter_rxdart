@@ -91,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: StreamBuilder<String>(
                             stream: bloc.email,
                             builder: (context, snapshot) {
+                              bloc.listenData();
                               return Text(
                                 snapshot.data ?? "nothing",
                                 style: TextStyle(fontSize: 20.0),

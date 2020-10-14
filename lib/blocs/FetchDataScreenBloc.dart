@@ -11,6 +11,8 @@ class FetchDataScreenBloc {
     _fetchSubject.sink.add(users);
   }
 
+
+
   dispose() {
     _fetchSubject?.close();
   }

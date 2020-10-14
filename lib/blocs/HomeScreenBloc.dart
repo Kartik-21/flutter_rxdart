@@ -12,6 +12,13 @@ class HomeScreenBloc extends Object with Validator {
 
   Stream<String> get email => _emailController.stream.transform(emailvalidator);
 
+  Stream<String> listenData() {
+    // email;
+    _emailController.listen((value) {
+      print(value);
+    });
+  }
+
   Stream<String> get password =>
       _passwordControlller.stream.transform(emailvalidator);
 
